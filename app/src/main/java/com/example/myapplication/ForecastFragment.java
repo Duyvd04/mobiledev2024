@@ -1,14 +1,14 @@
 package com.example.myapplication;
 
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,15 +48,25 @@ public class ForecastFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_forecast2, container, false);
 
-        // Create a GradientDrawable with the desired colors
+        LinearLayout layout = new LinearLayout(getContext());
+        layout.setOrientation(LinearLayout.VERTICAL);
 
 
-        // Set the GradientDrawable as the background of the view
-        view.setBackgroundColor(0x20FF0000);
+        TextView textView = new TextView(getContext());
+        textView.setText("Weather");
 
-        return view;
+        // Create a new ImageView
+        ImageView imageView = new ImageView(getContext());
+        imageView.setImageResource(R.drawable.weather2);
+        imageView.setBackgroundColor(0xFF000000);
+        imageView.setPadding(16, 16, 16, 16);
+
+        // Add the TextView and ImageView to the layout
+        layout.addView(textView);
+        layout.addView(imageView);
+
+        // Return the layout as the root view of the fragment
+        return layout;
     }
 }
