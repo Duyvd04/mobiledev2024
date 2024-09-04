@@ -56,14 +56,17 @@ public class ForecastFragment extends Fragment {
         TextView textView = new TextView(getContext());
         textView.setText("Weather");
 
+        // Create a new ImageView
         ImageView imageView = new ImageView(getContext());
         imageView.setImageResource(R.drawable.weather2);
         imageView.setBackgroundColor(0xFF000000);
         imageView.setPadding(16, 16, 16, 16);
 
+        // Add the TextView and ImageView to the layout
         layout.addView(textView);
         layout.addView(imageView);
 
+        // Return the layout as the root view of the fragment
         return layout;
     }
 }
