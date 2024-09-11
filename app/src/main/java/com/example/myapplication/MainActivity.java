@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
         ForecastFragment forecastFragment= new ForecastFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.main, forecastFragment).commit();
 
-        ForecastFragment backgroundFragment= new ForecastFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.main, backgroundFragment).commit();
+        WeatherFragment weatherFragment = new WeatherFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.main, weatherFragment).commit();
 
         setContentView(R.layout.activity_main);
 
