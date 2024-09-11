@@ -1,16 +1,11 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import android.util.Log;
-import android.widget.TextView;
-
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,13 +14,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ForecastFragment forecastFragment= new ForecastFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.main, forecastFragment).commit();
-
-        WeatherFragment weatherFragment = new WeatherFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.main, weatherFragment).commit();
-
         setContentView(R.layout.activity_main);
+
+        // Set up ViewPager
+        ViewPager viewPager = findViewById(R.id.viewPager);
+        List<WeatherAndForecastFragment> fragmentList = new ArrayList<>();
+
+        // Add three instances of WeatherAndForecastFragment to the ViewPager
+        fragmentList.add(WeatherAndForecastFragment.newInstance("Location1", "Data1"));
+        fragmentList.add(WeatherAndForecastFragment.newInstance("Location2", "Data2"));
+        fragmentList.add(WeatherAndForecastFragment.newInstance("Location3", "Data3"));
+
+        // Set up the adapter
+        WeatherPagerAdapter adapter = new WeatherPagerAdapter(getSupportFragmentManager(), fragmentList);
+        viewPager.setAdapter(adapter);
 
         Log.i(TAG, "onCreate called");
     }
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.i(TAG, "onStart called"); // i: information
+        Log.i(TAG, "onStart called");
     }
 
     @Override
@@ -59,6 +61,4 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Log.i(TAG, "onDestroy called");
     }
-
-
 }
