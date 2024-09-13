@@ -14,7 +14,6 @@ public class WeatherAndForecastFragment extends Fragment {
     private String mParam2;
 
     public WeatherAndForecastFragment() {
-        // Required empty public constructor
     }
 
     public static WeatherAndForecastFragment newInstance(String param1, String param2) {
@@ -39,8 +38,6 @@ public class WeatherAndForecastFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_weather_and_forecast, container, false);
-
-        // Add WeatherFragment and ForecastFragment to the fragment
         getChildFragmentManager().beginTransaction()
                 .replace(R.id.weather_container, new WeatherFragment())
                 .commit();

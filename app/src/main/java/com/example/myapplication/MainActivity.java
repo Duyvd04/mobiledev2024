@@ -16,16 +16,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Set up ViewPager
         ViewPager viewPager = findViewById(R.id.viewPager);
         List<WeatherAndForecastFragment> fragmentList = new ArrayList<>();
 
-        // Add three instances of WeatherAndForecastFragment to the ViewPager
         fragmentList.add(WeatherAndForecastFragment.newInstance("Location1", "Data1"));
         fragmentList.add(WeatherAndForecastFragment.newInstance("Location2", "Data2"));
         fragmentList.add(WeatherAndForecastFragment.newInstance("Location3", "Data3"));
 
-        // Set up the adapter
         WeatherPagerAdapter adapter = new WeatherPagerAdapter(getSupportFragmentManager(), fragmentList);
         viewPager.setAdapter(adapter);
 

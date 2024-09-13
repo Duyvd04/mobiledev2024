@@ -25,7 +25,6 @@ public class WeatherFragment extends Fragment {
     private String mParam2;
 
     public WeatherFragment() {
-        // Required empty public constructor
     }
 
     /**
@@ -58,7 +57,6 @@ public class WeatherFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_weather, container, false);
     }
 }
