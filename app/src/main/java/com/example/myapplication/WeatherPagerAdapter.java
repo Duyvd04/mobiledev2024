@@ -1,26 +1,29 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+
 import java.util.List;
 
-public class WeatherPagerAdapter extends FragmentPagerAdapter {
+public class WeatherPagerAdapter extends FragmentStateAdapter {
 
     private List<WeatherAndForecastFragment> fragmentList;
 
-    public WeatherPagerAdapter(FragmentManager fm, List<WeatherAndForecastFragment> fragmentList) {
-        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+    public WeatherPagerAdapter(@NonNull FragmentActivity fragmentActivity, List<WeatherAndForecastFragment> fragmentList) {
+        super(fragmentActivity);
         this.fragmentList = fragmentList;
     }
 
+    @NonNull
     @Override
-    public Fragment getItem(int position) {
+    public Fragment createFragment(int position) {
         return fragmentList.get(position);
     }
 
     @Override
-    public int getCount() {
+    public int getItemCount() {
         return fragmentList.size();
     }
 }
